@@ -15,7 +15,7 @@ export module apiCall{
         
         var array = makeJsonArrayOfReturns(jsonRes['Time Series (Daily)']);
 
-        return await jsonRes['Time Series (Daily)'];
+        return array;
     }
 
     //return array of daily returns as : a[0] = today, a[1] = yesterday ...

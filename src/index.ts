@@ -6,7 +6,7 @@ document.getElementById("click").onclick = start;
 async function start(){ 
   var symbol = (<HTMLInputElement>document.getElementById("symbol")).value;
   var jsonRes = await apiCall.makeApiCall(symbol);
-  document.getElementById("res").innerHTML = jsonRes;
+  document.getElementById("res").innerHTML = jsonRes.toString();
 }
 //start();
 

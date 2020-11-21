@@ -1,7 +1,8 @@
 import {apiCall} from './apiCall'
 import {draw} from './draw'
 import Chart from 'chart.js'
-import mathjs from 'mathjs'
+import {simulate} from './simulate'
+import { number } from 'mathjs';
 
 //const url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&outputsize=full&apikey=KA4TB78PB0MOW2AG";
 document.getElementById("click").onclick = start;
@@ -38,6 +39,7 @@ function add(){
 }
 
 function analytics(returnArrays : number[][]){
-    
+    var bestWeights : number[] = simulate.simulateRepeatedly(returnArrays, 10)
+    console.log(bestWeights)
 }
 

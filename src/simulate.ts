@@ -13,7 +13,7 @@ export module simulate{
         return sharpeRatio
     }
 
-    function simulateRepeatedly(returns: number[][], times: number){
+    export function simulateRepeatedly(returns: number[][], times: number){
         var numberOfStocks = returns.length
 
         var highestSharpeRatio : number = 0

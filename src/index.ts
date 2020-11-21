@@ -2,7 +2,7 @@ import {apiCall} from './apiCall'
 import {draw} from './draw'
 import Chart from 'chart.js'
 import {simulate} from './simulate'
-import { number } from 'mathjs';
+import { matrix } from 'mathjs';
 
 //const url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&outputsize=full&apikey=KA4TB78PB0MOW2AG";
 document.getElementById("click").onclick = start;

@@ -1,5 +1,5 @@
 import lodash from 'lodash'
-import mathjs from 'mathjs'
+import {matrix, transpose, multiply} from 'mathjs'
 
 export module dataAnalytics{
 
@@ -106,12 +106,12 @@ export module dataAnalytics{
             throw("size of variance covariance matrix and weights vector don't match")
         }
 
-        var w = mathjs.matrix([weights])
-        var wTranspose = mathjs.transpose(w)
+        var w = matrix([weights])
+        var wTranspose = transpose(w)
 
-        var first = mathjs.multiply(wTranspose, varinaceCovarianceMatrix)
+        var first = multiply(wTranspose, varinaceCovarianceMatrix)
 
-        return mathjs.multiply(first, w)
+        return multiply(first, w)
     }
 
     export function sharpeRatio(riskOfPortfolio : number, expectedReturnOfPortfolio : number){

@@ -22,7 +22,10 @@
   },
   "dependencies": {
     "@types/chart.js": "^2.9.28",
+    "@types/lodash": "^4.14.165",
+    "@types/mathjs": "^6.0.7",
     "chart.js": "^2.9.4",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "mathjs": "^8.0.1"
   }
 }

@@ -109,9 +109,9 @@ export module dataAnalytics{
         var w = matrix([weights])
         var wTranspose = transpose(w)
 
-        var first = multiply(wTranspose, varinaceCovarianceMatrix)
+        var first = multiply(w, varinaceCovarianceMatrix)
 
-        return multiply(first, w)
+        return multiply(first, wTranspose)
     }
 
     export function sharpeRatio(riskOfPortfolio : number, expectedReturnOfPortfolio : number){

@@ -3,6 +3,7 @@ import {draw} from './draw'
 import Chart from 'chart.js'
 import {simulate} from './simulate'
 import { matrix } from 'mathjs';
+import { head } from 'lodash';
 
 //const url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&outputsize=full&apikey=KA4TB78PB0MOW2AG";
 document.getElementById("click").onclick = start;
@@ -16,7 +17,10 @@ async function start(){
   for(var i = 0; i < ul.length; i++){
     var symbol = ul[i].innerHTML;
     var returns : number[] = await apiCall.makeApiCall(symbol);
-    document.getElementById("res").innerHTML = returns.toString();
+
+    fillReturns(returns.toString(), ul[i].innerHTML, i)
+    //document.getElementById("res").innerHTML = returns.toString();
+
     returnArrays[i] = returns;
     //draw.drawChart(returns);
   }
@@ -41,5 +45,22 @@ function add(){
 function analytics(returnArrays : number[][]){
     var bestWeights : number[] = simulate.simulateRepeatedly(returnArrays, 10)
     console.log(bestWeights)
+}
+
+function fillReturns(returns : string, symbol : string, id : number){
+    var formattedReturns = returns.replace(/,/g, "\n")
+    
+    var divElement = document.createElement("div")
+    divElement.classList.add("ret")
+    divElement.id = "return" + id.toString()
+    divElement.innerHTML = formattedReturns
+
+    var headerElement = document.createElement("h2")
+    headerElement.classList.add("sym")
+    headerElement.id = "symbol" + id.toString()
+    headerElement.innerHTML = symbol
+
+    document.getElementById("returns").appendChild(headerElement)
+    document.getElementById("returns").appendChild(divElement)
 }
 

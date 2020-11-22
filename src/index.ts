@@ -9,6 +9,8 @@ import { head } from 'lodash';
 document.getElementById("click").onclick = start;
 document.getElementById("add").onclick = add;
 
+const numberOfTrials = 10
+
 var ul = document.getElementById("stocks").children;
 (<HTMLButtonElement>document.getElementById("click")).disabled = true;
 
@@ -43,7 +45,7 @@ function add(){
 }
 
 function analytics(returnArrays : number[][]){
-    var bestWeights : number[] = simulate.simulateRepeatedly(returnArrays, 10)
+    var bestWeights : number[] = simulate.simulateRepeatedly(returnArrays, numberOfTrials)
     console.log(bestWeights)
 }
 

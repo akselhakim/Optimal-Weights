@@ -1,5 +1,5 @@
 import lodash from 'lodash'
-import {matrix, transpose, multiply} from 'mathjs'
+import {matrix, transpose, multiply, variance} from 'mathjs'
 
 export module dataAnalytics{
 
@@ -15,15 +15,16 @@ export module dataAnalytics{
     }
 
     function varianceOfStock(returns : number[]){
-        var sum : number = 0;
-        var expectedReturn = expectedReturnOfStock(returns);
+        // var sum : number = 0;
+        // var expectedReturn = expectedReturnOfStock(returns);
 
-        for(var i = 0; i < returns.length; i++){
-            var add = (returns[i] - expectedReturn) ** 2;
-            sum = sum + add;
-        }
+        // for(var i = 0; i < returns.length; i++){
+        //     var add = (returns[i] - expectedReturn) ** 2;
+        //     sum = sum + add;
+        // }
 
-        return sum / returns.length
+        // return sum / returns.length
+        return variance(returns)
     }
 
     function riskOfStock(returns : number[]){
@@ -35,6 +36,15 @@ export module dataAnalytics{
         if(returns.length != weights.length){
             throw "weights length and returns length are not equal";
         }
+        
+        // var weightsSum = 0
+        // for(var i = 0; i < weights.length; i++){
+        //     weightsSum += weights[i];
+        // }
+
+        // if(weightsSum != 0){
+        //     throw "weights don't add up to 1";
+        // }
         //can check if sum of weights are 1
 
         var numberOfStocks: number = weights.length
@@ -130,7 +140,8 @@ export module dataAnalytics{
 
         length = Math.sqrt(length)
         for(var i = 0; i < numberOfAssets; i++){
-            weights[i] = weights[i] / length
+            var v = weights[i] / length
+            weights[i] = v ** 2
         }
 
         return weights
